@@ -22,8 +22,25 @@ const ALLOWED_ORIGINS = CORS_ORIGIN
   .map(origin => origin.trim())
   .filter(Boolean);
 
+function isAllowedOrigin(origin) {
+  if (!origin) {
+    return true;
+  }
+
+  if (ALLOWED_ORIGINS.includes(origin)) {
+    return true;
+  }
+
+  try {
+    const url = new URL(origin);
+    return url.hostname.endsWith('.vercel.app');
+  } catch {
+    return false;
+  }
+}
+
 const corsOrigin = (origin, callback) => {
-  if (!origin || ALLOWED_ORIGINS.includes(origin)) {
+  if (isAllowedOrigin(origin)) {
     callback(null, true);
     return;
   }
@@ -36,7 +53,14 @@ app.use(express.json());
 
 const io = new Server(server, {
   cors: {
-    origin: ALLOWED_ORIGINS,
+    origin: (origin, callback) => {
+      if (isAllowedOrigin(origin)) {
+        callback(null, true);
+        return;
+      }
+
+      callback(new Error(`Socket CORS blocked for origin: ${origin}`));
+    },
     methods: ['GET', 'POST'],
   },
 });
