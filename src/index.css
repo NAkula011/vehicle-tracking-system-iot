@@ -1,0 +1,371 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Light theme variables (default) */
+  :root {
+    --background: 210 20% 98%;
+    --foreground: 220 12% 12%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 220 12% 12%;
+    --card-shadow: 0 6px 18px rgba(16,24,40,0.06);
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 220 12% 12%;
+
+    --primary: 265 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 220 12% 95%;
+    --muted-foreground: 220 12% 60%;
+
+    --accent: 190 95% 50%;
+    --accent-foreground: 230 25% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 220 12% 92%;
+    --input: 220 12% 96%;
+    --ring: 265 90% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 220 12% 30%;
+    --sidebar-primary: 265 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 96%;
+    --sidebar-accent-foreground: 220 12% 12%;
+    --sidebar-border: 220 12% 92%;
+    --sidebar-ring: 265 90% 60%;
+
+    --neon-purple: 265 90% 60%;
+    --neon-blue: 220 90% 55%;
+    --neon-cyan: 190 95% 50%;
+    --neon-green: 145 80% 50%;
+    --neon-red: 0 85% 55%;
+    --neon-orange: 30 95% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(265 90% 60%), hsl(220 90% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(220 90% 55%), hsl(190 95% 50%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 85% 55%), hsl(30 95% 55%));
+    --gradient-success: linear-gradient(135deg, hsl(145 80% 50%), hsl(190 95% 50%));
+
+    --shadow-neon: 0 0 12px hsl(265 90% 60% / 0.15);
+    --shadow-neon-blue: 0 0 12px hsl(220 90% 55% / 0.15);
+    --shadow-neon-cyan: 0 0 12px hsl(190 95% 50% / 0.15);
+  }
+
+  /* Dark theme overrides (applies when `html` has class `dark`) */
+  .dark {
+    --background: 230 25% 7%;
+    --foreground: 220 20% 92%;
+
+    --card: 230 22% 10%;
+    --card-foreground: 220 20% 92%;
+
+    --popover: 230 22% 10%;
+    --popover-foreground: 220 20% 92%;
+
+    --primary: 265 90% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 220 70% 50%;
+    --secondary-foreground: 0 0% 100%;
+
+    --muted: 230 20% 15%;
+    --muted-foreground: 220 15% 55%;
+
+    --accent: 190 95% 50%;
+    --accent-foreground: 230 25% 7%;
+
+    --destructive: 0 72% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 230 20% 18%;
+    --input: 230 20% 18%;
+    --ring: 265 90% 60%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 230 25% 9%;
+    --sidebar-foreground: 220 15% 70%;
+    --sidebar-primary: 265 90% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 230 20% 15%;
+    --sidebar-accent-foreground: 220 20% 92%;
+    --sidebar-border: 230 20% 15%;
+    --sidebar-ring: 265 90% 60%;
+
+    --neon-purple: 265 90% 60%;
+    --neon-blue: 220 90% 55%;
+    --neon-cyan: 190 95% 50%;
+    --neon-green: 145 80% 50%;
+    --neon-red: 0 85% 55%;
+    --neon-orange: 30 95% 55%;
+
+    --gradient-primary: linear-gradient(135deg, hsl(265 90% 60%), hsl(220 90% 55%));
+    --gradient-accent: linear-gradient(135deg, hsl(220 90% 55%), hsl(190 95% 50%));
+    --gradient-danger: linear-gradient(135deg, hsl(0 85% 55%), hsl(30 95% 55%));
+    --gradient-success: linear-gradient(135deg, hsl(145 80% 50%), hsl(190 95% 50%));
+
+    --shadow-neon: 0 0 20px hsl(265 90% 60% / 0.3);
+    --shadow-neon-blue: 0 0 20px hsl(220 90% 55% / 0.3);
+    --shadow-neon-cyan: 0 0 20px hsl(190 95% 50% / 0.3);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    transition: background-color 220ms ease, color 220ms ease;
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-card/60 backdrop-blur-xl border border-border/50 rounded-xl;
+  }
+  .neon-glow {
+    box-shadow: var(--shadow-neon);
+  }
+  .neon-glow-blue {
+    box-shadow: var(--shadow-neon-blue);
+  }
+  .neon-glow-cyan {
+    box-shadow: var(--shadow-neon-cyan);
+  }
+  .gradient-primary {
+    background: var(--gradient-primary);
+  }
+  .gradient-accent {
+    background: var(--gradient-accent);
+  }
+  .gradient-danger {
+    background: var(--gradient-danger);
+  }
+  .gradient-success {
+    background: var(--gradient-success);
+  }
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .stat-card {
+    @apply glass-card p-3 sm:p-4 relative overflow-hidden transition-all duration-300;
+  }
+  .stat-card:hover {
+    @apply border-primary/50;
+    box-shadow: var(--shadow-neon);
+  }
+  .stat-card::before {
+    content: '';
+    @apply absolute top-0 left-0 right-0 h-[2px];
+    background: var(--gradient-primary);
+  }
+  .control-btn {
+    @apply px-4 py-2.5 rounded-lg font-medium text-sm transition-all duration-300 flex items-center gap-2;
+  }
+  .control-btn-primary {
+    @apply control-btn text-primary-foreground;
+    background: var(--gradient-primary);
+  }
+  .control-btn-primary:hover {
+    box-shadow: var(--shadow-neon);
+    transform: translateY(-1px);
+  }
+  .control-btn-danger {
+    @apply control-btn text-destructive-foreground;
+    background: var(--gradient-danger);
+  }
+  .control-btn-danger:hover {
+    transform: translateY(-1px);
+  }
+  .control-btn-success {
+    @apply control-btn text-primary-foreground;
+    background: var(--gradient-success);
+  }
+  .control-btn-success:hover {
+    transform: translateY(-1px);
+  }
+  .signal-bar {
+    @apply w-1 rounded-full transition-all duration-300;
+  }
+  .pulse-dot {
+    @apply relative;
+  }
+  .pulse-dot::after {
+    content: '';
+    @apply absolute inset-0 rounded-full animate-ping;
+    background: inherit;
+    opacity: 0.4;
+  }
+  .safe-area-bottom {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+  .scrollbar-thin {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(230, 20%, 20%) transparent;
+  }
+}
+
+/* Leaflet map styles: light (default) and dark overrides */
+.leaflet-container {
+  background: hsl(var(--background)) !important;
+  border-radius: 0.75rem;
+}
+.leaflet-tile-pane {
+  filter: none;
+}
+.leaflet-control-zoom a {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-color: hsl(var(--border)) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: hsl(var(--card)) !important;
+  color: hsl(var(--card-foreground)) !important;
+  border-radius: 0.75rem !important;
+}
+.leaflet-popup-tip {
+  background: hsl(var(--card)) !important;
+}
+
+/* Dashboard map UI polish */
+.map-toolbar-btn {
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card) / 0.9);
+  color: hsl(var(--foreground));
+  padding: 0.42rem 0.7rem;
+  border-radius: 0.6rem;
+  font-size: 0.72rem;
+  font-weight: 600;
+  line-height: 1;
+  backdrop-filter: blur(8px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  transition: transform 160ms ease, background-color 160ms ease, border-color 160ms ease;
+}
+.map-toolbar-btn:hover {
+  transform: translateY(-1px);
+}
+.map-toolbar-btn--active {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+
+.map-legend-panel {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.4rem;
+  border: 1px solid hsl(var(--border));
+  background: hsl(var(--card) / 0.86);
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  padding: 0.3rem 0.45rem;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.map-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.18rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  border: 1px solid transparent;
+  transition: transform 140ms ease, border-color 140ms ease, box-shadow 140ms ease;
+}
+.map-chip:active {
+  transform: scale(0.98);
+}
+.map-chip--vehicle {
+  background: hsl(265 90% 60% / 0.14);
+  color: hsl(265 90% 52%);
+}
+.map-chip--system {
+  background: hsl(190 95% 50% / 0.14);
+  color: hsl(190 88% 42%);
+}
+.map-chip--route {
+  background: hsl(220 90% 55% / 0.14);
+  color: hsl(220 82% 47%);
+}
+.map-chip--active {
+  border-color: hsl(var(--primary));
+  box-shadow: 0 0 0 2px hsl(var(--primary) / 0.2);
+}
+
+/* Vehicle marker polish */
+.map-vehicle-icon-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 8px hsl(220 20% 10% / 0.25));
+}
+.map-vehicle-icon-wrap--faded {
+  opacity: 0.58;
+  filter: grayscale(45%) drop-shadow(0 2px 6px hsl(220 20% 10% / 0.2));
+}
+.map-vehicle-icon {
+  display: block;
+  transform-origin: center center;
+  transition: transform 420ms ease, opacity 260ms ease;
+  will-change: transform;
+}
+
+@media (max-width: 640px) {
+  .map-toolbar-btn {
+    font-size: 0.67rem;
+    padding: 0.4rem 0.6rem;
+  }
+  .map-legend-panel {
+    border-radius: 0.7rem;
+    padding: 0.28rem 0.4rem;
+  }
+}
+
+/* Dark-specific map tweaks */
+.dark .leaflet-tile-pane {
+  filter: brightness(0.7) contrast(1.15) saturate(0.85);
+}
+.dark .leaflet-control-zoom a {
+  background: hsl(230 22% 10%) !important;
+  color: hsl(220 20% 92%) !important;
+  border-color: hsl(230 20% 18%) !important;
+}
+.dark .leaflet-popup-content-wrapper {
+  background: hsl(230 22% 10%) !important;
+  color: hsl(220 20% 92%) !important;
+}
+.dark .leaflet-popup-tip {
+  background: hsl(230 22% 10%) !important;
+}
+.dark .map-toolbar-btn {
+  background: hsl(230 22% 10% / 0.9);
+  border-color: hsl(230 20% 18%);
+  color: hsl(220 20% 92%);
+}
+.dark .map-toolbar-btn--active {
+  background: hsl(var(--primary));
+  border-color: hsl(var(--primary));
+  color: hsl(var(--primary-foreground));
+}
+.dark .map-legend-panel {
+  background: hsl(230 22% 10% / 0.86);
+  border-color: hsl(230 20% 18%);
+}
